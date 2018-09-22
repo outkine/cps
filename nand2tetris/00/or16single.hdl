@@ -1,0 +1,9 @@
+CHIP or16single {
+    IN a[16], b;
+    OUT out[16];
+    PARTS:
+    Not16(in=a, out=c);
+    Not(in=b, out=d);
+    nand16single(a=c, b=d, out=out);
+}
+

@@ -1,0 +1,7 @@
+CHIP nor {
+    IN a, b;
+    OUT nout;
+    PARTS:
+    Or(a=a, b=b, out=out);
+    Not(in=out, out=nout);
+}
