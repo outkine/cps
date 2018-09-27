@@ -20,14 +20,14 @@ public class PasswordEnhancer
     public static String enhancePassword(String oldPassword) {
         String[] vowels = { "a", "e", "i", "o", "u" };
         String[] replacements = { "@", "3", "!", "0", "^" };
-        String result = new String();
         for (int i = 0; i < vowels.length; i++) {
             int index = oldPassword.indexOf(vowels[i]);
-            if (index != -1) {
-                result = oldPassword.substring(0, index) + replacements[i] + oldPassword.substring(index + 1, oldPassword.length());
+            while (index != -1) {
+                oldPassword = oldPassword.substring(0, index) + replacements[i] + oldPassword.substring(index + 1, oldPassword.length());
+                index = oldPassword.indexOf(vowels[i]);
             }
         }
-        return result;
+        return oldPassword;
     }
 
     public static <T> void p(T s) {
