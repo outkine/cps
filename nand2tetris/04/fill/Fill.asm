@@ -14,31 +14,28 @@
 // Put your code here.
 
 (WAITPRESS)
+@i
+M=0
+
+// toggle if screen is off and key is pressed
+@SCREEN
+D=!M
 @KBD
-D=M
-@STARTTOGGLE
-D;JGT
+D=D&M
+@TOGGLE
+D;JNE
+// or screen is on and key is not presssed
+@SCREEN
+D=!M
+@KBD
+D=D|M
+@TOGGLE
+D;JEQ
+
 @WAITPRESS
 0;JMP
 
-(WAITRELEASE)
-@KBD
-D=M
-@STARTTOGGLE
-D;JEQ
-@WAITRELEASE
-0;JMP
-
-(STARTTOGGLE)
-@i
-M=0
-@TOGGLE
-0;JMP
-
 (TOGGLE)
-@i
-M=M+1
-
 @i
 D=M
 @SCREEN
@@ -46,19 +43,14 @@ A=D+A
 M=!M
 
 @i
+M=M+1
+
+@i
 D=M
 @8192
 D=D-A
-@DECIDEWAIT
+@WAITPRESS
 D;JEQ
 @TOGGLE
-0;JMP
-
-(DECIDEWAIT)
-@KBD
-D=M
-@WAITRELEASE
-D;JGT
-@WAITPRESS
 0;JMP
 
