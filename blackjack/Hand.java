@@ -50,4 +50,8 @@ public class Hand {
             default: assert false; return "";
         }
     }
+
+    public void reset() {
+        cards = new ArrayList<Card>();
+    }
 }

@@ -9,7 +9,8 @@ public class Dealer extends Human {
             hand.deal(shoe.nextCard());
         }
         if (hand.isDoneState()) {
-            System.out.println("The dealer " + hand.stateToString());
+            System.out.println("\nDealer hand:\n" + hand.toString() + "\n");
+            System.out.println("\nThe dealer " + hand.stateToString());
 
             if (hand.getState() == HandState.BLACKJACK) {
                 player.lose();
@@ -17,28 +18,33 @@ public class Dealer extends Human {
                 player.win();
             }
         } else {
-            while (!player.hand.isDoneState() && !player.stay) {
-                player.hand.deal(shoe.nextCard());
+            player.hand.deal(shoe.nextCard());
+            player.hand.deal(shoe.nextCard());
+            System.out.println("\nDealer hand:\n" + hand.toString() + "\n\nYour hand:\n" + player.hand.toString() + "\n");
 
-                System.out.println("Dealer hand:\n" + hand.toString() + "Your hand:\n" + player.hand.toString());
-                System.out.println("Hit? Y/N:");
-                player.stay = scan.nextLine().equals("N");
+            while (!player.hand.isDoneState() && !player.stay) {
+                System.out.println("\nHit? Y/N:");
+                player.stay = scan.next().equals("N");
+                Card card = shoe.nextCard();
+                player.hand.deal(card);
+                System.out.println("You got a " + card.toString());
             }
 
+            System.out.println("\nDealer total: " + hand.getValue() + "\nYour total: " + player.hand.getValue() + "\n");
             if (player.hand.isDoneState()) {
                 if (player.hand.getState() == HandState.BLACKJACK) {
                     player.win();
                 } else {
                     player.lose();
                 }
-            }
-
-            if (player.hand.getValue() == hand.getValue()) {
-                System.out.println("You have tied! You get your bet back.");
-            } else if (player.hand.getValue() > hand.getValue()) {
-                player.win();
             } else {
-                player.lose();
+                if (player.hand.getValue() == hand.getValue()) {
+                    System.out.println("You have tied! You get your bet back.");
+                } else if (player.hand.getValue() > hand.getValue()) {
+                    player.win();
+                } else {
+                    player.lose();
+                }
             }
         }
     }

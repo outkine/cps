@@ -10,6 +10,7 @@ public class Game {
             .mapToObj(i -> new Deck())
             .collect(Collectors.toCollection(ArrayList::new));
         Shoe shoe = new Shoe(decks);
+        shoe.shuffle();
         Dealer dealer = new Dealer();
         Player player = new Player();
 
@@ -20,8 +21,11 @@ public class Game {
 
             System.out.println("Your current balance is " + player.balance);
             System.out.println("Play another round? Y/N");
-            nextRound = scan.nextLine().equals("Y");
+            nextRound = scan.next().equals("Y");
             player.reset();
+            dealer.reset();
         }
+
+        System.out.println("\nGo enjoy some nature!");
     }
 }

@@ -12,15 +12,16 @@ public class Player extends Human {
 
     public void lose() {
         balance -= bet;
-        System.out.println("You lost!");
+        System.out.println("You lost!\n");
     }
 
     public void win() {
         balance += bet;
-        System.out.println("You won!");
+        System.out.println("You won!\n");
     }
 
     public void reset() {
+        super.reset();
         bet = 0;
     }
 }

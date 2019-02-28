@@ -6,4 +6,8 @@ public class Human {
     public Human () {
         hand = new Hand();
     }
+
+    public void reset () {
+        hand.reset();
+    }
 }
