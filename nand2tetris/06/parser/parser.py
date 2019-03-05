@@ -23,7 +23,7 @@ comment = r'\s*\/\/.*'
 def joinre(mappings):
     return '|'.join(map(re.escape, mappings.keys()))
 
-syntax = {k: v + rf'({comment})?' for k, v in {
+syntax = {k: rf'^{v}({comment})?$' for k, v in {
     'label': rf'\((?P<label>{symbol})\)',
     'a_instruction': rf'@((?P<name>{symbol})|(?P<value>\d+))',
     'c_instruction': rf'((?P<d>{joinre(ds)})=)?(?P<c>({joinre(cs)}(?=;)|{joinre(cs)}))(;(?P<j>{joinre(js)}))?',
@@ -32,7 +32,7 @@ syntax = {k: v + rf'({comment})?' for k, v in {
 
 symbols = {}
 hack = []
-variable_address = 0x400
+variable_address = 0x10
 
 def numToInstruction(num):
     return '0' + format(num, '015b')
@@ -60,7 +60,6 @@ for line in lines:
     elif res.group('name'):
         if res.group('name') not in predefined:
             if res.group('name') not in symbols:
-                print(res.group('name'))
                 symbols[res.group('name')] = variable_address
                 variable_address += 1
             name = symbols[res.group('name')]
@@ -75,7 +74,7 @@ for line in lines:
         a = '1' if 'M' in res.group('c') else '0'
         hack.append('111' + a + cs[res.group('c')] + ds.get(res.group('d'), '000') + js.get(res.group('j'), '000'))
 
-outfile = args.outfile or args.infile.split['.'][0] + '.hack'
+outfile = args.outfile or args.infile.name.split('.')[0] + '.hack'
 with open(outfile, 'w') as write_file:
     write_file.writelines('\n'.join(hack) + '\n')
 
