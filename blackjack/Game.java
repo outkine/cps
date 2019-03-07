@@ -4,6 +4,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Game {
+    /**
+     * Constructs the necessary instances and runs rounds until the player decides to quit or runs out of money
+     * @param args Arguments passed through the CLI
+     */
     public static void main(String[] args) {
         ArrayList<Deck> decks = IntStream
             .range(0, 6)
@@ -20,10 +24,15 @@ public class Game {
             dealer.startRound(scan, player, shoe);
 
             System.out.println("Your current balance is " + player.balance);
-            System.out.println("Play another round? Y/N");
-            nextRound = scan.next().equals("Y");
-            player.reset();
-            dealer.reset();
+            if (player.balance < 0) {
+                System.out.println("You're in debt! Game over.");
+                nextRound = false;
+            } else {
+                System.out.println("Play another round? Y/N");
+                nextRound = scan.next().equals("Y");
+                player.reset();
+                dealer.reset();
+            }
         }
 
         System.out.println("\nGo enjoy some nature!");

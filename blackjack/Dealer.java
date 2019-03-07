@@ -1,9 +1,19 @@
 import java.util.Scanner;
 
 public class Dealer extends Human {
+    /**
+     * Starts a round
+     * @param scan A scanner object
+     * @param player A player object
+     * @param shoe A shoe object
+     */
     public void startRound(Scanner scan, Player player, Shoe shoe) {
         System.out.println("How much are you betting this round?");
-        player.bet = scan.nextInt();
+        int bet = scan.nextInt();
+        while (bet > player.balance) {
+            System.out.println("Bet must be less than current balance.");
+            bet = scan.nextInt();
+        }
 
         while (hand.getState() == HandState.GOOD) {
             hand.deal(shoe.nextCard());

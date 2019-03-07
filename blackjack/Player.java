@@ -3,6 +3,9 @@ public class Player extends Human {
     public int balance;
     public boolean stay;
 
+    /**
+     * Constructs a Player object
+     */
     public Player() {
         super();
         bet = 0;
@@ -10,16 +13,25 @@ public class Player extends Human {
         balance = 100;
     }
 
+    /**
+     * Handles a losing scenario
+     */
     public void lose() {
         balance -= bet;
         System.out.println("You lost!\n");
     }
 
+    /**
+     * Handles a winning scenario
+     */
     public void win() {
         balance += bet;
         System.out.println("You won!\n");
     }
 
+    /**
+     * Resets the player's local state for a round
+     */
     public void reset() {
         super.reset();
         bet = 0;

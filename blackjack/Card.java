@@ -23,15 +23,28 @@ public class Card {
     public String rank;
     public String suit;
 
+    /**
+     * Contructs a Card object
+     * @param rank the rank of the card
+     * @param suit the suit of the card
+     */
     public Card(String rank, String suit) {
         this.rank = rank;
         this.suit = suit;
     }
 
+    /**
+     * Returns the value of the card
+     * @return the value
+     */
     public int getValue() {
         return Card.rankToValue.get(this.rank);
     }
 
+    /**
+     * Returns the string representation of the card
+     * @return the string representation
+     */
     public String toString() {
         return rank + " of " + suit;
     }
