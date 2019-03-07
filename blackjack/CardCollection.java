@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class CardCollection {
     protected ArrayList<Card> cards;
@@ -19,5 +20,15 @@ public class CardCollection {
             cards = Deck.makeDeck();
         }
         return cards.remove(0);
+    }
+
+    /**
+     * Returns the string representation
+     * @return the string representation
+     */
+    public String toString() {
+        return cards.stream()
+            .map(Object::toString)
+            .collect(Collectors.joining("\n"));
     }
 }

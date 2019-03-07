@@ -36,4 +36,12 @@ public class Player extends Human {
         super.reset();
         bet = 0;
     }
+
+    /**
+     * Returns the string representation
+     * @return the string representation
+     */
+    public String toString() {
+        return "Player with a bet of " + bet + " and a balance of " + balance;
+    }
 }

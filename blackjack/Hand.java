@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Hand {
@@ -16,9 +17,16 @@ public class Hand {
      * @return the value
      */
     public int getValue() {
-        return cards.stream()
+        int value = cards.stream()
             .map(card -> card.getValue())
             .reduce(0, Integer::sum);
+        if (value > 21) {
+            List<Card> aces = cards.stream()
+                .filter(card -> card.rank.equals("Ace"))
+                .collect(Collectors.toList());
+            value -= aces.size() * 10;
+        }
+        return value;
     }
 
     /**
@@ -56,7 +64,7 @@ public class Hand {
 
     /**
      * Returns a string representation of the hand
-     * @return the state
+     * @return the string representation
      */
     public String toString() {
         return cards.stream()
@@ -66,7 +74,7 @@ public class Hand {
 
     /**
      * Returns a string representation of the hand's state
-     * @return the state
+     * @return the string representation
      */
     public String stateToString() {
         switch (getState()) {

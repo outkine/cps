@@ -1,11 +1,10 @@
 import java.util.Map;
 
 public class Card {
-    public static String[] ranks = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+    public static String[] ranks = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
     public static String[] suits = {"Spades", "Hearts", "Clubs", "Diamonds"};
 
     public static Map<String, Integer> rankToValue = Map.ofEntries(
-        Map.entry("Ace", 1),
         Map.entry("Two", 2),
         Map.entry("Three", 3),
         Map.entry("Four", 4),
@@ -17,7 +16,8 @@ public class Card {
         Map.entry("Ten", 10),
         Map.entry("Jack", 10),
         Map.entry("Queen", 10),
-        Map.entry("King", 10)
+        Map.entry("King", 10),
+        Map.entry("Ace", 11)
     );
 
     public String rank;
