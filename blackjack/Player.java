@@ -1,5 +1,7 @@
 public class Player extends Human {
     public int bet;
+    public int insuranceBet;
+    public boolean doingInsurance;
     public int balance;
     public boolean stay;
 
@@ -35,6 +37,8 @@ public class Player extends Human {
     public void reset() {
         super.reset();
         bet = 0;
+        insuranceBet = 0;
+        doingInsurance = false;
     }
 
     /**
@@ -44,4 +48,34 @@ public class Player extends Human {
     public String toString() {
         return "Player with a bet of " + bet + " and a balance of " + balance;
     }
+
+    /**
+     * Handles a winning insurance scenario
+     */
+    public void winInsurance() {
+        if (doingInsurance) {
+            balance += insuranceBet;
+            System.out.println("You won your insurance!");
+        }
+    }
+
+    /**
+     * Handles a losing insurance scenario
+     */
+    public void loseInsurance() {
+        if (doingInsurance) {
+            balance -= insuranceBet;
+            System.out.println("You lost your insurance!");
+        }
+    }
+
+    /**
+     * Sets insurance
+     * @param insurance the insurance
+     */
+    public void setInsurance(int insurance) {
+        this.insuranceBet = insurance;
+        this.doingInsurance = true;
+    }
 }
+

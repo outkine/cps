@@ -9,22 +9,40 @@ public class Dealer extends Human {
      */
     public void startRound(Scanner scan, Player player, Shoe shoe) {
         System.out.println("How much are you betting this round?");
-        int bet = scan.nextInt();
-        while (bet > player.balance) {
-            System.out.println("Bet must be less than current balance.");
-            bet = scan.nextInt();
+        int bet = Helpers.getInt(scan);
+        while (bet > player.balance || bet < 0) {
+            System.out.println("Bet must be positive and less than the current balance.");
+            bet = Helpers.getInt(scan);
         }
+        player.bet = bet;
+
+        Card firstCard = shoe.nextCard();
+        hand.deal(firstCard);
+        if (firstCard.rank.equals("Ace")) {
+            boolean insurance = Helpers.confirm(scan, "The Dealer got an Ace! Would you like to take insurance?");
+            if (insurance) {
+                int insuranceBet = Helpers.getInt(scan);
+                while (insuranceBet > player.insuranceBet / 2 || insuranceBet < 0) {
+                    System.out.println("Bet must be positive and less than half the current bet.");
+                    insuranceBet = Helpers.getInt(scan);
+                }
+                player.setInsurance(insuranceBet);
+            }
+        }
+        hand.deal(shoe.nextCard(), false);
 
         while (hand.getState() == HandState.GOOD) {
-            hand.deal(shoe.nextCard());
         }
+
         if (hand.isDoneState()) {
             System.out.println("\nDealer hand:\n" + hand.toString() + "\n");
             System.out.println("\nThe dealer " + hand.stateToString());
 
             if (hand.getState() == HandState.BLACKJACK) {
+                player.winInsurance();
                 player.lose();
             } else {
+                player.loseInsurance();
                 player.win();
             }
         } else {
@@ -33,8 +51,7 @@ public class Dealer extends Human {
             System.out.println("\nDealer hand:\n" + hand.toString() + "\n\nYour hand:\n" + player.hand.toString() + "\n");
 
             while (!player.hand.isDoneState() && !player.stay) {
-                System.out.println("\nHit? Y/N:");
-                player.stay = scan.next().equals("N");
+                player.stay = Helpers.confirm(scan, "Hit?");
                 Card card = shoe.nextCard();
                 player.hand.deal(card);
                 System.out.println("You got a " + card.toString());

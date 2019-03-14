@@ -28,8 +28,7 @@ public class Game {
                 System.out.println("You're in debt! Game over.");
                 nextRound = false;
             } else {
-                System.out.println("Play another round? Y/N");
-                nextRound = scan.next().equals("Y");
+                nextRound = Helpers.confirm(scan, "Play another round?");
                 player.reset();
                 dealer.reset();
             }

@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 public class Hand {
     ArrayList<Card> cards;
+    ArrayList<Card> invisibleCards;
 
     /**
      * Constructs a Hand object
@@ -63,12 +64,24 @@ public class Hand {
     }
 
     /**
+     * Add a card to the hand
+     * @param card the card to add
+     * @param visible whether it should be visible
+     */
+    public void deal(Card card, boolean visible) {
+        cards.add(card);
+        if (!visible) {
+            invisibleCards.add(card);
+        }
+    }
+
+    /**
      * Returns a string representation of the hand
      * @return the string representation
      */
     public String toString() {
         return cards.stream()
-            .map(Object::toString)
+            .map(card -> invisibleCards.contains(card) ? "***" : card.toString())
             .collect(Collectors.joining("\n"));
     }
 
@@ -91,5 +104,6 @@ public class Hand {
      */
     public void reset() {
         cards = new ArrayList<Card>();
+        invisibleCards = new ArrayList<Card>();
     }
 }
