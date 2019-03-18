@@ -82,7 +82,7 @@ public class Hand {
      */
     public String toString() {
         return cards.stream()
-            .map(card -> invisibleCards.contains(card) ? "***" : card.toString())
+            .map(card -> invisibleCards.contains(card) ? "********" : card.toString())
             .collect(Collectors.joining("\n"));
     }
 
@@ -92,10 +92,10 @@ public class Hand {
      */
     public String stateToString() {
         switch (getState()) {
-            case BLACKJACK: return "has a blackjack";
-            case BUST: return "is busted";
+            case BLACKJACK: return "in posession of a blackjack";
+            case BUST: return "busted";
             case STAY:
-            case GOOD: return "is still good";
+            case GOOD: return "still good";
             default: assert false; return "";
         }
     }
