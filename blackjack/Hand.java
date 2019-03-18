@@ -11,6 +11,7 @@ public class Hand {
      */
     public Hand() {
         cards = new ArrayList<Card>();
+        invisibleCards = new ArrayList<Card>();
     }
 
     /**

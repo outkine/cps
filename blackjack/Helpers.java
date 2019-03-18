@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Helpers {
     public static boolean confirm(Scanner scan, String prompt) {
-        System.out.println("\n" + prompt + " Y/N\n");
+        System.out.println("\n" + prompt + " Y/N");
 
         String input = scan.next();
         while (!input.equals("Y") && !input.equals("N")) {
