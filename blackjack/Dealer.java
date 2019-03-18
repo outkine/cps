@@ -31,11 +31,11 @@ public class Dealer extends Human {
         }
         hand.deal(shoe.nextCard(), false);
 
-        System.out.println("\nDealer hand:\n" + hand.toString() + "\n");
+        System.out.println("Dealer hand:\n" + hand.toString() + "\n");
 
         player.hand.deal(shoe.nextCard());
         player.hand.deal(shoe.nextCard());
-        System.out.println("\nYour hand:\n" + player.hand.toString() + "\n");
+        System.out.println("Your hand:\n" + player.hand.toString() + "\n");
 
         player.stay = !Helpers.confirm(scan, "Hit?");
 
@@ -56,10 +56,10 @@ public class Dealer extends Human {
             while (hand.getState() == HandState.GOOD) {
                 Card card = shoe.nextCard();
                 hand.deal(card, false);
-                System.out.println("\nThe dealer got a " + card.toString());
+                System.out.println("The dealer got a " + card.toString());
             }
             if (hand.isDoneState()) {
-                System.out.println("\nThe dealer " + hand.stateToString());
+                System.out.println("The dealer " + hand.stateToString());
 
                 if (hand.getState() == HandState.BLACKJACK) {
                     player.winInsurance();
@@ -69,7 +69,7 @@ public class Dealer extends Human {
                     player.win();
                 }
             } else {
-                System.out.println("\nDealer total: " + hand.getValue() + "\nYour total: " + player.hand.getValue() + "\n");
+                System.out.println("Dealer total: " + hand.getValue() + "\nYour total: " + player.hand.getValue() + "\n");
                 if (player.hand.getValue() == hand.getValue()) {
                     System.out.println("You have tied! You get your bet back.");
                 } else if (player.hand.getValue() > hand.getValue()) {

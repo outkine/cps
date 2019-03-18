@@ -9,6 +9,7 @@ public class Helpers {
             System.out.println("Please answer Y or N.");
             input = scan.next();
         }
+        System.out.println();
         return input.equals("Y");
     }
 
@@ -24,6 +25,7 @@ public class Helpers {
                 scan.next();
             }
         }
+        System.out.println();
         return result;
     }
 }
