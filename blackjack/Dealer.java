@@ -38,12 +38,29 @@ public class Dealer extends Human {
         player.hand.deal(shoe.nextCard());
         System.out.println("Your hand:\n" + player.hand.toString() + "\n");
 
-        while (!player.hand.isDoneState() && !player.stay) {
-            player.stay = !Helpers.confirm(scan, "Hit?");
-            if (!player.stay) {
-                Card card = shoe.nextCard();
-                player.hand.deal(card);
-                System.out.println("You got a " + card.toString());
+        boolean stay = false;
+
+        while (!player.hand.isDoneState() && !stay) {
+            if (player.hand.cardNumber() == 5) {
+                player.winCharlie();
+                return;
+            } else {
+                if (player.hand.cardNumber() == 0) {
+                    String action = Helpers.confirmOptions(scan, "Hit, stay, or double down?", java.util.Arrays.asList("H", "S", "D"));
+                    player.doubleDown = action.equals("D");
+                    stay = action.equals("S");
+                } else {
+                    stay = !Helpers.confirm(scan, "Hit?");
+                }
+
+                if (!stay) {
+                    Card card = shoe.nextCard();
+                    player.hand.deal(card);
+                    System.out.println("You got a " + card.toString());
+                    if (player.doubleDown) {
+                        stay = true;
+                    }
+                }
             }
         }
 

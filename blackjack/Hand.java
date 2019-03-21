@@ -15,6 +15,14 @@ public class Hand {
     }
 
     /**
+     * Returns the number of cards
+     * @return number of cards
+     */
+    public int cardNumber () {
+        return cards.size();
+    }
+
+    /**
      * Gets the total value of a hand
      * @return the value
      */

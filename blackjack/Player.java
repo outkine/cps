@@ -3,7 +3,7 @@ public class Player extends Human {
     public int insuranceBet;
     public boolean doingInsurance;
     public int balance;
-    public boolean stay;
+    public boolean doubleDown;
 
     /**
      * Constructs a Player object
@@ -11,15 +11,15 @@ public class Player extends Human {
     public Player() {
         super();
         bet = 0;
-        stay = false;
         balance = 100;
+        doubleDown = false;
     }
 
     /**
      * Handles a losing scenario
      */
     public void lose() {
-        balance -= bet;
+        balance -= doubleDown ? bet * 2 : bet;
         System.out.println("You lost!\n");
     }
 
@@ -27,8 +27,16 @@ public class Player extends Human {
      * Handles a winning scenario
      */
     public void win() {
-        balance += bet;
+        balance += doubleDown ? bet * 2 : bet;
         System.out.println("You won!\n");
+    }
+
+    /**
+     * Handles a Five Card Charlie
+     */
+    public void winCharlie() {
+        balance += bet;
+        System.out.println("You won with a five card charlie!\n");
     }
 
     /**
@@ -39,6 +47,7 @@ public class Player extends Human {
         bet = 0;
         insuranceBet = 0;
         doingInsurance = false;
+        doubleDown = false;
     }
 
     /**

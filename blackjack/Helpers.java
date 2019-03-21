@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 
 public class Helpers {
     public static boolean confirm(Scanner scan, String prompt) {
@@ -11,6 +12,21 @@ public class Helpers {
         }
         System.out.println();
         return input.equals("Y");
+    }
+
+    public static String confirmOptions(Scanner scan, String prompt, List<String> options) {
+        System.out.println("\n" + prompt + String.join("/", options));
+        String input = scan.next();
+
+        while (true) {
+            for (String option : options) {
+                if (option.equals(input)) {
+                    return input;
+                }
+            }
+            System.out.println("Please answer one of " + String.join(" or ", options));
+            input = scan.next();
+        }
     }
 
     public static int getInt(Scanner scan) {
