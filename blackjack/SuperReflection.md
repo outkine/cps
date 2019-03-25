@@ -10,7 +10,7 @@ A bullet point list seems appropriate:
 * I correctly predicted the need for a `Hand` class, but it turned out much larger than I thought. One specific difference is the need for states: very often in the `Dealer` class I had to find out what state the player or dealer is in, and the `Hand` class is perfect for this. In fact, I even made a separate enum (`HandState`) to hold the busted-or-not state.
 * My UML `Dealer` class was empty, but in reality it houses most of the logic. The `startRound` method is the largest in the entire project, just because the logic of what happens in a round is the most complicated.
 * My `Card` class had the right private properties, but I ended up adding a bunch of static properties. Those are the lists of all possible card states, such as ranks and suits, and the value of each rank. Although these are used primarily in other classes, the `Card` class nonetheless felt like the most natural place to put them.
-* I wasn't sure about how the `Shoe` worked, which is why my UML gave it a list of decks. The final version install concatenates all of those into one big `Card` list.
+* I wasn't sure about how the `Shoe` worked, which is why my UML gave it a list of decks. The final version instead concatenates all of those into one big `Card` list.
 * Lastly, I didn't anticipate the need for one important superclass: `CardCollection`. It turns out that the `Deck` and `Shoe` classes are ultimately really similar, and so instead of putting logic that deals with card collections in both, I elevated it into that superclass.
 
 
@@ -37,9 +37,9 @@ But then I remembered that a lot of people in the OOP community have been callin
 ```
 The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.
 ```
-Because everything is so tightly coupled, a small change in one part of your code leads to disasters. And although the ultimate solution to this is to use components, there's a way to minimize it while still using OOP: components.
+Because everything is so tightly coupled, a small change in one part of your code leads to disasters. And although the ultimate solution to this is to use a functional language, there's a way to minimize it while still using OOP: components.
 
 Instead of building elaborate class hierarchies, components allow you to represent small bits of functionality with their own objects. Then, the parent object "owns" all of those behaviors in the form of properties. This means coupling, but without the whole jungle problem. That's exactly what I ended up doing with my `Hand` class: it exists as a property on the `Human` super class.
 
 ## Grade
-I think I deserve a 92. Although I didn't go above and beyond with my features, I still put forth a legitimate effort and tried to be a good coder.
+I think I deserve a 92. Although I didn't go above and beyond with my features, I still put forth a legitimate effort and tried to be a good coder. If you do find any bugs, please do let me know! I'm always happy to learn from my mistakes :)
