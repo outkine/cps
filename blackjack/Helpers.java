@@ -15,16 +15,17 @@ public class Helpers {
     }
 
     public static String confirmOptions(Scanner scan, String prompt, List<String> options) {
-        System.out.println("\n" + prompt + String.join("/", options));
+        System.out.println("\n" + prompt + " " + String.join("/", options));
         String input = scan.next();
 
         while (true) {
             for (String option : options) {
                 if (option.equals(input)) {
+                    System.out.println();
                     return input;
                 }
             }
-            System.out.println("Please answer one of " + String.join(" or ", options));
+            System.out.println("Please answer " + String.join(" or ", options));
             input = scan.next();
         }
     }

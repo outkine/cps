@@ -46,7 +46,7 @@ public class Dealer extends Human {
                 player.winCharlie();
                 return;
             } else {
-                if (player.hand.cardNumber() == 0) {
+                if (player.hand.cardNumber() == 2) {
                     String action = Helpers.confirmOptions(scan, "Hit, stay, or double down?", java.util.Arrays.asList("H", "S", "D"));
                     player.doubleDown = action.equals("D");
                     stay = action.equals("S");
