@@ -17,3 +17,13 @@ public class PlayerTester {
     }
 }
 
+/* TESTER OUTPUT
+Player Anton with a bet of 30 and a balance of 100
+You lost!
+
+Player Anton with a bet of 30 and a balance of 70
+Player Anton with a bet of 0 and a balance of 70
+You won!
+
+Player Anton with a bet of 30 and a balance of 100
+ */

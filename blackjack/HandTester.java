@@ -15,3 +15,11 @@ public class HandTester {
         System.out.println(hand.stateToString());
     }
 }
+
+/* TESTER OUTPUT
+still good
+Two of Spades
+still good
+
+still good
+ */

@@ -9,3 +9,9 @@ public class CardTester {
         System.out.println(card.getValue());
     }
 }
+
+
+/* TESTER OUTPUT
+Two of Spades
+2
+ */

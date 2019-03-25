@@ -16,24 +16,37 @@ public class DealerTester {
         Scanner scan = new Scanner(System.in);
 
         dealer.startRound(scan, player, shoe);
+    }
+}
 
-        /*
-# TRIAL ONE
+/* TESTER OUTPUT
+[[TRIAL ONE]]
 
 How much are you betting this round?
-> 5
+> 30
 
 Dealer hand:
-Nine of Diamonds
-Seven of Spades
-Queen of Spades
+********
+Ten of Hearts
+
+Your hand:
+Ten of Hearts
+Six of Clubs
 
 
-The dealer is busted
+Hit, stay, or double down? H/S/D
+> 3
+Please answer H or S or D
+> Y
+Please answer H or S or D
+> D
+
+You got a Five of Clubs
+You are in posession of a blackjack
 You won!
 
 
-# TRIAL TWO
+[[TRIAL TWO]]
 
 How much are you betting this round?
 > 10
@@ -53,8 +66,4 @@ You got a Queen of Diamonds
 
 Dealer total: 19
 Your total: 28
-
-You lost!
-         */
-    }
-}
+*/
