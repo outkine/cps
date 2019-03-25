@@ -21,11 +21,12 @@ public class Dealer extends Human {
         Card visibleCard = shoe.nextCard();
         hand.deal(visibleCard);
         if (visibleCard.rank.equals("Ace")) {
-            boolean insurance = Helpers.confirm(scan, "The Dealer got an Ace! Would you like to take insurance?");
-            if (insurance) {
+            player.doingInsurance = Helpers.confirm(scan, "The Dealer got an Ace! Would you like to take insurance?");
+            if (player.doingInsurance) {
+                System.out.println("Please enter a bet.");
                 int insuranceBet = Helpers.getInt(scan);
-                while (insuranceBet > player.insuranceBet / 2 || insuranceBet < 0) {
-                    System.out.println("Bet must be positive and less than half the current bet.");
+                while (player.bet > 1 && (insuranceBet > player.bet / 2.0 || insuranceBet < 0)) {
+                    System.out.println("Bet must be positive and less than half the current bet (" + player.bet / 2.0 + ").");
                     insuranceBet = Helpers.getInt(scan);
                 }
                 player.setInsurance(insuranceBet);
@@ -68,8 +69,10 @@ public class Dealer extends Human {
             System.out.println("You are " + player.hand.stateToString());
             if (player.hand.getState() == HandState.BLACKJACK) {
                 player.win();
+                player.loseInsurance();
             } else {
                 player.lose();
+                player.winInsurance();
             }
         } else {
             while (hand.getState() == HandState.GOOD) {
@@ -82,11 +85,11 @@ public class Dealer extends Human {
                 System.out.println("(the dealer's hidden card was a " + hand.cards.get(0).toString() + ")");
 
                 if (hand.getState() == HandState.BLACKJACK) {
-                    player.winInsurance();
                     player.lose();
+                    player.winInsurance();
                 } else {
-                    player.loseInsurance();
                     player.win();
+                    player.loseInsurance();
                 }
             } else {
                 System.out.println("\nDealer total: " + hand.getValue() + "\nYour total: " + player.hand.getValue());
