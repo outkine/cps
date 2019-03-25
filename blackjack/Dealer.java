@@ -23,7 +23,7 @@ public class Dealer extends Human {
         if (visibleCard.rank.equals("Ace")) {
             player.doingInsurance = Helpers.confirm(scan, "The Dealer got an Ace! Would you like to take insurance?");
             if (player.doingInsurance) {
-                System.out.println("Please enter a bet.");
+                System.out.println("Please enter an insurance bet.");
                 int insuranceBet = Helpers.getInt(scan);
                 while (player.bet > 1 && (insuranceBet > player.bet / 2.0 || insuranceBet < 0)) {
                     System.out.println("Bet must be positive and less than half the current bet (" + player.bet / 2.0 + ").");

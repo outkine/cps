@@ -4,15 +4,18 @@ public class Player extends Human {
     public boolean doingInsurance;
     public int balance;
     public boolean doubleDown;
+    private String name;
 
     /**
      * Constructs a Player object
+     * @param name the player's name
      */
-    public Player() {
+    public Player(String name) {
         super();
         bet = 0;
         balance = 100;
         doubleDown = false;
+        this.name = name;
     }
 
     /**
@@ -55,7 +58,7 @@ public class Player extends Human {
      * @return the string representation
      */
     public String toString() {
-        return "Player with a bet of " + bet + " and a balance of " + balance;
+        return "Player " + name + " with a bet of " + bet + " and a balance of " + balance;
     }
 
     /**
@@ -85,6 +88,20 @@ public class Player extends Human {
     public void setInsurance(int insurance) {
         this.insuranceBet = insurance;
         this.doingInsurance = true;
+    }
+
+    /**
+     * Says goodbye to the player.
+     */
+    public void sayGoodbye() {
+        System.out.println("\nGoodbye, " + name + "! Go enjoy some nature!");
+    }
+
+    /**
+     * Displays a greeting for the player.
+     */
+    public void greet() {
+        System.out.println("\nWelcome, " + name + "!");
     }
 }
 

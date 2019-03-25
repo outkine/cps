@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 
 public class PlayerTester {
     public static void main(String[] args) {
-        Player player = new Player();
+        Player player = new Player("Anton");
         player.bet = 30;
         System.out.println(player.toString());
         player.lose();
@@ -16,3 +16,4 @@ public class PlayerTester {
         System.out.println(player.toString());
     }
 }
+

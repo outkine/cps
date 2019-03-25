@@ -12,7 +12,7 @@ public class DealerTester {
         Shoe shoe = new Shoe(decks);
         shoe.shuffle();
         Dealer dealer = new Dealer();
-        Player player = new Player();
+        Player player = new Player("Anton");
         Scanner scan = new Scanner(System.in);
 
         dealer.startRound(scan, player, shoe);

@@ -16,16 +16,21 @@ public class Game {
         Shoe shoe = new Shoe(decks);
         shoe.shuffle();
         Dealer dealer = new Dealer();
-        Player player = new Player();
 
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("Hello! Welcome to Blackjack TM. Start by entering your name.");
+        String name = scan.nextLine();
+        Player player = new Player(name);
+        player.greet();
+
         boolean nextRound = true;
         while (nextRound) {
             dealer.startRound(scan, player, shoe);
 
             System.out.println("Your current balance is " + player.balance);
-            if (player.balance < 0) {
-                System.out.println("You're in debt! Game over.");
+            if (player.balance <= 0) {
+                System.out.println("You're out of money! Game over.");
                 nextRound = false;
             } else {
                 nextRound = Helpers.confirm(scan, "Play another round?");
@@ -34,6 +39,6 @@ public class Game {
             }
         }
 
-        System.out.println("\nGo enjoy some nature!");
+        player.sayGoodbye();
     }
 }
