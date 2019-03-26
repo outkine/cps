@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Deck
+comment1.params=
+comment1.target=java.util.ArrayList\ makeDeck()
+comment1.text=\n\ Constructs\ an\ ArrayList\ deck\ with\ all\ the\ right\ Cards\n\ @return\ the\ ArrayList\n
+comment2.params=
+comment2.target=Deck()
+comment2.text=\n\ Constructs\ a\ Deck\ object\n
+numComments=3

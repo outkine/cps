@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=CardCollection
+comment1.params=
+comment1.target=void\ shuffle()
+comment1.text=\n\ Shuffles\ the\ collection\n
+comment2.params=
+comment2.target=Card\ nextCard()
+comment2.text=\n\ Returns\ a\ card\ from\ the\ collection\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\n\ Returns\ the\ string\ representation\n\ @return\ the\ string\ representation\n
+numComments=4

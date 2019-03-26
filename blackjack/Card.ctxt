@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Card
+comment1.params=rank\ suit
+comment1.target=Card(java.lang.String,\ java.lang.String)
+comment1.text=\n\ Contructs\ a\ Card\ object\n\ @param\ rank\ the\ rank\ of\ the\ card\n\ @param\ suit\ the\ suit\ of\ the\ card\n
+comment2.params=
+comment2.target=int\ getValue()
+comment2.text=\n\ Returns\ the\ value\ of\ the\ card\n\ @return\ the\ value\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\n\ Returns\ the\ string\ representation\ of\ the\ card\n\ @return\ the\ string\ representation\n
+numComments=4

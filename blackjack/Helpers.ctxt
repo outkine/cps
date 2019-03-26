@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Helpers
+comment1.params=scan\ prompt
+comment1.target=boolean\ confirm(java.util.Scanner,\ java.lang.String)
+comment1.text=\n\ Confirms\ a\ prompt\ by\ asking\ the\ player\ for\ a\ "Y"\ or\ "N"\n\ @param\ scan\ the\ scanner\ to\ use\n\ @param\ prompt\ the\ prompt\ to\ display\n\ @return\ whether\ the\ player\ confirmed\n
+comment2.params=scan\ prompt\ options
+comment2.target=java.lang.String\ confirmOptions(java.util.Scanner,\ java.lang.String,\ java.util.List)
+comment2.text=\n\ Confirms\ a\ prompt\ by\ asking\ the\ player\ for\ one\ of\ a\ list\ of\ options\n\ @param\ scan\ the\ scanner\ to\ use\n\ @param\ prompt\ the\ prompt\ to\ display\n\ @param\ options\ the\ list\ of\ options\ to\ use\n\ @return\ the\ option\ confirmed\n
+comment3.params=scan
+comment3.target=int\ getInt(java.util.Scanner)
+comment3.text=\n\ Get\ an\ integer\ from\ the\ player\n\ @param\ scan\ the\ scanner\ to\ use\n\ @return\ the\ integer\n
+numComments=4

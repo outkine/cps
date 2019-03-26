@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Human
+comment1.params=
+comment1.target=Human()
+comment1.text=\n\ Constructs\ a\ Human\ object\n
+comment2.params=
+comment2.target=void\ reset()
+comment2.text=\n\ Resets\ the\ human's\ local\ state\ for\ a\ round\n
+numComments=3

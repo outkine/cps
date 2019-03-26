@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Shoe
+comment1.params=decks
+comment1.target=Shoe(java.util.ArrayList)
+comment1.text=\n\ Constructs\ a\ Shoe\ object\n\ @param\ decks\ a\ list\ of\ decks\ to\ pull\ cards\ from\n
+numComments=2
