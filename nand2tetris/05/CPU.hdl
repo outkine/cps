@@ -83,14 +83,14 @@ CHIP CPU {
         zr=zr
     );
 
-    /* 13 = less, 14 = eq, 15 = greater */
+    /* 2 = less = ng, 1 = eq = zr, 0 = greater = gt */
     And(a=ng, b=instruction[2], out=j1);
     And(a=zr, b=instruction[1], out=j2);
     Or(a=ng, b=zr, out=notgt);
     Not(in=notgt, out=gt);
     And(a=gt, b=instruction[0], out=j3);
-    Or(a=j1, b=j2, out=j12);
-    Or(a=j12, b=j3, out=j);
+    Or(a=j1, b=j2, out=j1or2);
+    Or(a=j1or2, b=j3, out=j);
     Not(in=j, out=inc);
 
     And(a=j, b=instruction[15], out=realJ);
