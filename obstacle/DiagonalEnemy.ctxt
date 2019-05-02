@@ -1,0 +1,4 @@
+#BlueJ class context
+comment0.params=x\ y\ w\ h\ sH\ yS\ sW\ xS
+comment0.target=DiagonalEnemy(int,\ int,\ int,\ int,\ int,\ int,\ int,\ int)
+numComments=1

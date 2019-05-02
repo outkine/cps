@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=x\ y\ w\ h
+comment0.target=Enemy(int,\ int,\ int,\ int)
+comment1.params=
+comment1.target=java.awt.Rectangle\ getRectangle()
+comment2.params=p
+comment2.target=boolean\ intersects(java.awt.Rectangle)
+comment3.params=g
+comment3.target=void\ draw(java.awt.Graphics)
+comment4.params=
+comment4.target=java.awt.Color\ getColor()
+comment5.params=
+comment5.target=void\ move()
+numComments=6
